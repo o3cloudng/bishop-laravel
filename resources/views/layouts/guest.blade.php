@@ -30,31 +30,31 @@
     <section class="bg-gray-200 border-b py-8 px-20">
       <div class="flex flex-wrap">
           <div class="flex flex-wrap -mx-4">
-              <div class="md:w-1/5 h-auto px-4">
+              <div class="md:w-1/5 h-auto px-4 py-4 md:py-2">
                   <div class="h-full w-full bg-cover rounded shadow-md">
                       <img class="rounded shadow-md"
                           src="{{ asset('images/books/politics-front.jpg') }}" alt="">
                   </div>
               </div>
-              <div class="md:w-1/5 h-auto px-4">
+              <div class="md:w-1/5 h-auto px-4 py-4 md:py-2">
                   <div class="h-full w-full bg-cover rounded shadow-md">
                       <img class="rounded shadow-md"
                           src="{{ asset('images/books/no-more-delay-front.jpg') }}" alt="">
                   </div>
               </div>
-              <div class="md:w-1/5 h-auto px-4">
+              <div class="md:w-1/5 h-auto px-4 py-4 md:py-2">
                   <div class="h-full w-full bg-cover rounded shadow-md">
                       <img class="rounded shadow-md"
                           src="{{ asset('images/books/the-wedding-gift-front.jpg') }}" alt="">
                   </div>
               </div>
-              <div class="md:w-1/5 h-auto px-4">
+              <div class="md:w-1/5 h-auto px-4 py-4 md:py-2">
                   <div class="h-full w-full bg-cover rounded shadow-md">
                       <img class="rounded shadow-md"
                           src="{{ asset('images/books/your-miracle-will-happen.jpg') }}" alt="">
                   </div>
               </div>
-              <div class="md:w-1/5 h-auto px-4">
+              <div class="md:w-1/5 h-auto px-4 py-4 md:py-2">
                   <div class="h-full w-full bg-cover rounded shadow-md">
                       <img class="rounded shadow-md"
                           src="{{ asset('images/books/blooming-rose.jpg') }}" alt="">

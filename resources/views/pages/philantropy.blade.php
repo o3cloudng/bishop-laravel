@@ -10,7 +10,7 @@
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
           <div class="flex flex-wrap">
-            <div class="w-1/2 sm:w-1/2 p-6">
+            <div class="w-2/2 sm:w-1/2 p-6">
               <h3 class="text-3xl text-gray-800 font-bold leading-none mb-4">
                 Sumary
             </h3>
@@ -31,7 +31,7 @@
               </p>
              
             </div>
-            <div class="w-1/2 sm:w-1/2 p-6">
+            <div class="w-2/2 sm:w-1/2 p-6">
                 <h3 class="text-3xl text-gray-800 font-bold leading-none mb-4">
                     Hospitality
                 </h3>

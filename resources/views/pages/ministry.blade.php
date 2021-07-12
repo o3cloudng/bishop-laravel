@@ -10,7 +10,7 @@
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
           <div class="flex flex-wrap">
-            <div class="w-2/3 sm:w-2/3 p-6">
+            <div class="w-3/3 sm:w-2/3 p-6">
               <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
                 Ministerial Works
               </h3>
