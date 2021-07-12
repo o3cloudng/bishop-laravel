@@ -54,7 +54,7 @@
                 </div>
             </div>
         </section>
-        <section class="bg-gray-200 border-b py-8 px-20">
+        {{-- <section class="bg-gray-200 border-b py-8 px-20">
             <div class="flex flex-wrap">
                 <div class="flex flex-wrap -mx-4">
                     <div class="md:w-1/5 h-auto px-4">
@@ -89,6 +89,6 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
 </x-guest-layout>

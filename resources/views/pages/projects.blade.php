@@ -40,48 +40,5 @@
                 </div>
             </div>
         </section>
-        
-        <section class="w-full bg-gradient-to-r from-pink-500 to-yellow-500 mx-auto text-center py-6 mb-12">
-
-            <div class="container flex flex-wrap">
-                <div class="md:w-1/6 h-auto px-4">
-                    <div class="h-full w-full bg-cover rounded shadow-md">
-                        <img class="rounded shadow-md"
-                            src="{{ asset('images/books/politics-front.jpg') }}" alt="">
-                    </div>
-                </div>
-                <div class="md:w-1/6 h-auto px-4">
-                    <div class="h-full w-full bg-cover rounded shadow-md">
-                        <img class="rounded shadow-md"
-                            src="{{ asset('images/books/politics-front.jpg') }}" alt="">
-                    </div>
-                </div>
-                <div class="md:w-1/6 h-auto px-4">
-                    <div class="h-full w-full bg-cover rounded shadow-md">
-                        <img class="rounded shadow-md"
-                            src="{{ asset('images/books/politics-front.jpg') }}" alt="">
-                    </div>
-                </div>
-                <div class="md:w-1/6 h-auto px-4">
-                    <div class="h-full w-full bg-cover rounded shadow-md">
-                        <img class="rounded shadow-md"
-                            src="{{ asset('images/books/politics-front.jpg') }}" alt="">
-                    </div>
-                </div>
-                <div class="md:w-1/6 h-auto px-4">
-                    <div class="h-full w-full bg-cover rounded shadow-md">
-                        <img class="rounded shadow-md"
-                            src="{{ asset('images/books/politics-front.jpg') }}" alt="">
-                    </div>
-                </div>
-                <div class="md:w-1/6 h-auto px-4">
-                    <div class="h-full w-full bg-cover rounded shadow-md">
-                        <img class="rounded shadow-md"
-                            src="{{ asset('images/books/politics-front.jpg') }}" alt="">
-                    </div>
-                </div>
-            </div>
-
-        </section>
 
 </x-guest-layout>
