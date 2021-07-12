@@ -35,7 +35,35 @@
                             project to do. He is a resilient and focused geoscientist/entrepreneur. He is tireless"
 
                         </p>
-
+                        
+                    </div>
+                    <div class="w-3/3 sm:w-1/3 p-1 flex flex-wrap -mx-1">
+                        <div class="md:w-1/2 px-2 mb-4">
+                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                        </div>
+                        <div class="md:w-1/2 px-2 mb-4">
+                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                        </div>
+                        <div class="md:w-1/2 px-2 mb-4">
+                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                        </div>
+                        <div class="md:w-1/2 px-2 mb-4">
+                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                        </div>
+                    </div>
+                    <div class="w-3/3 sm:w-3/3 p-6 md:p-1 flex flex-wrap -mx-1">
+                        <div class="md:w-1/4 px-2 mb-4">
+                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                        </div>
+                        <div class="md:w-1/4 px-2 mb-4">
+                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                        </div>
+                        <div class="md:w-1/4 px-2 mb-4">
+                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                        </div>
+                        <div class="md:w-1/4 px-2 mb-4">
+                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
