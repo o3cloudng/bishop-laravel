@@ -39,30 +39,31 @@
                     </div>
                     <div class="w-3/3 sm:w-1/3 p-1 flex flex-wrap -mx-1">
                         <div class="md:w-1/2 px-2 mb-4">
-                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                            <img class="rounded shadow-md" src="{{ asset('images/pages/pro1.jpg') }}" alt="">
                         </div>
                         <div class="md:w-1/2 px-2 mb-4">
-                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                            <img class="rounded shadow-md" src="{{ asset('images/pages/pro2.jpg') }}" alt="">
                         </div>
                         <div class="md:w-1/2 px-2 mb-4">
-                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                            <img class="rounded shadow-md" src="{{ asset('images/pages/pro3.jpg') }}" alt="">
                         </div>
                         <div class="md:w-1/2 px-2 mb-4">
-                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                            <img class="rounded shadow-md" src="{{ asset('images/pages/pro4.jpg') }}" alt="">
                         </div>
                     </div>
                     <div class="w-3/3 sm:w-3/3 p-6 md:p-1 flex flex-wrap -mx-1">
                         <div class="md:w-1/4 px-2 mb-4">
-                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                            <img class="rounded shadow-md" src="{{ asset('images/pages/pro9.jpg') }}" alt="">
                         </div>
                         <div class="md:w-1/4 px-2 mb-4">
-                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                            <img class="rounded shadow-md" src="{{ asset('images/pages/pro6.jpg') }}" alt="">
                         </div>
                         <div class="md:w-1/4 px-2 mb-4">
-                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                            <img class="rounded shadow-md" src="{{ asset('images/pages/pro7.jpg') }}" alt="">
                         </div>
                         <div class="md:w-1/4 px-2 mb-4">
-                            <img class="rounded shadow-md" src="https://source.unsplash.com/random/720x1280" alt="">
+                            <img class="rounded shadow-md" src="{{ asset('images/pages/pro8.jpg') }}" alt="">
+                        </div>
                         </div>
                     </div>
                 </div>
