@@ -25,10 +25,28 @@ Route::get('/email', function(){
     Mail::to('o3cloudng@gmail.com')->send(new ContactMail());
    return new ContactMail();
 }); // End Test Email Link
+
 // Clear Cache
 Route::get('/config-cache', function() {
     $exitCode = Artisan::call('config:cache');
-    // return what you want
+    return '<h1>Config cache</h1>';
+});
+//Clear Cache facade value:
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return '<h1>Cache facade value cleared</h1>';
+});
+
+//Reoptimized class loader:
+Route::get('/optimize', function() {
+    $exitCode = Artisan::call('optimize');
+    return '<h1>Reoptimized class loader</h1>';
+});
+
+//Route cache:
+Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    return '<h1>Routes cached</h1>';
 });
 
 
