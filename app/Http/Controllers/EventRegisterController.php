@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegisterEmail;
 use Illuminate\Http\Request;
 use App\Models\EventRegister;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class EventRegisterController extends Controller
 {
@@ -48,6 +50,9 @@ class EventRegisterController extends Controller
             'address' => ''
         ]);
 
+        // dd($request->email);
+        Mail::to($request->email)->send(new RegisterEmail());
+
         // Store
         $eventRegsiter =EventRegister::create([
             'fullname' => $request->fullname,
@@ -57,6 +62,7 @@ class EventRegisterController extends Controller
             'buying' => $request->buying,
             'address' => $request->address,
         ]);
+
         // Sign in after registration
         // auth()->attempt($request->only('email', 'password'));
         // Redirect
