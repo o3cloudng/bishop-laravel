@@ -18,8 +18,8 @@
           </a>
         </div>
         <!--Right Col-->
-        <div class="w-1/5 md:w-3/5 py-6 md:pl-40 text-center">
-          <img class="w-1/5 md:w-3/5 z-50" src="{{ asset('images/bishop-2.png') }}" />
+        <div class="w-5/5 md:w-1/5 md:w-3/5 py-6 md:pl-40 text-center">
+          <img class="w-5/5 md:w-1/5 md:w-3/5 z-50" src="{{ asset('images/bishop-2.png') }}" />
         </div>
       </div>
     </div>
