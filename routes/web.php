@@ -3,6 +3,7 @@
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\EventController;
@@ -24,6 +25,13 @@ Route::get('/email', function(){
     Mail::to('o3cloudng@gmail.com')->send(new ContactMail());
    return new ContactMail();
 }); // End Test Email Link
+// Clear Cache
+Route::get('/config-cache', function() {
+    $exitCode = Artisan::call('config:cache');
+    // return what you want
+});
+
+
 
 // Books
 // Route::resource('/books', BookController::class);
