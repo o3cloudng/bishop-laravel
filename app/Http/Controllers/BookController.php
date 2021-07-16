@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\State;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -72,8 +73,9 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::findOrFail($id);
+        $states = State::all();
         // dd($book);
-        return view('books.show', ['book' => $book]);
+        return view('books.show', ['book' => $book, 'states' => $states]);
     }
 
     public function verify($reference)

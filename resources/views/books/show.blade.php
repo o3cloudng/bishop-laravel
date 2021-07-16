@@ -41,7 +41,7 @@
                                     <div class="bg-white rounded shadow-lg border flex flex-col overflow-hidden text-gray-500">
                                         <button @click={show=false}
                                             class="fill-current h-6 w-6 absolute right-0 top-0 m-6 font-3xl font-bold">&times;</button>
-                                        <div class="px-6 py-3 text-xl border-b font-bold">Make Payment</div>
+                                        <div class="px-6 py-3 text-xl border-b font-bold">Make Payment (<span id ="book">&#8358;{{ number_format($book->price, 2) }}</span>)</div>
                                         <div class="p-6 flex-grow">
                                             <form action="">
                                                 @csrf
@@ -51,7 +51,14 @@
                                                         <input class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" value="{{old('email')}}" id="email" placeholder="Email Address" />
                                                         <input class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="tel" name="phone" value="{{old('phone')}}" id="phone" placeholder="Phone number" />
                                                         <input class="" type="hidden" name="amount" value="{{ $book->price }}" id="amount"/>
-                                                        <input class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="&#8358;{{ number_format($book->price, 2) }}" disabled />
+                                                        <select name="state" id="state" class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="{{old('state')}}" onchange="ship()">
+                                                            <option class="text-gray-700" value="">Delevery state</option>
+                                                            @foreach ($states as $state )
+                                                                <option class="text-gray-700" value="{{ $state->name }}">{{ $state->name }}</option>                                                                
+                                                            @endforeach
+                                                        </select>
+                                                        {{-- <input class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Book cost = &#8358;{{ number_format($book->price, 2) }} " disabled /> --}}
+                                                        <input class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="shipping" type="text" placeholder="Shipping fee" disabled />
                                                         <textarea class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="address" id="address" value="{{old('address')}}" rows="3" placeholder="Shipping Address"></textarea>
                                                     </div>
                                                     <div></div>
@@ -59,12 +66,15 @@
                                             </form>
                                         </div>
                                         <div class="px-6 py-3 border-t">
-                                            <div class="flex justify-end">
-                                                <button id="close" @click={show=false} type="button"
+                                            <div class="flex justify-between">
+                                                <button class="font-bold text-red-500 rounded border-2 border-red-200 px-4 py-2">Total: &#8358;<span id="total">{{ number_format($book->price, 2) }}</span></button>
+                                                <div>
+                                                    <button id="close" @click={show=false} type="button"
                                                     class="bg-gray-200 text-gray-500 rounded-full px-4 py-2 mr-1">Cancel</Button>
                                                 <button id="pay" type="button" onclick="payWithPaystack()"
                                                     class="bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full lg:mt-0 py-2 px-4 shadow opacity-75">Buy Now</Button>
-                                            </div>
+                                                </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -79,6 +89,28 @@
         </section>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
+
+function ship() {
+    let state = document.getElementById('state').value
+    if (state == 'Oyo') {
+        document.getElementById('shipping').value = "+ free shipping";
+        document.getElementById('total').innerHTML = {{ $book->price }};
+        console.log('Select changed ' + state)
+    } 
+    else if (state == 'Lagos') {
+        document.getElementById('shipping').value = "+ 1500";
+        document.getElementById('total').innerHTML = {{ $book->price }} + 1500;
+        console.log('Select changed ' + state)
+        console.log({{ $book->price }} + 1500)
+    } 
+    else {
+        document.getElementById('shipping').value = "+ 2500";
+        document.getElementById('total').innerHTML = {{ $book->price }} + 2500;        
+        console.log('Select changed ' + state)
+        console.log({{ $book->price }} + 2500)
+    }
+    
+}
 
 function randomRefId(string_length) {
     var random_string = '';
@@ -129,7 +161,8 @@ function payWithPaystack() {
     const fullname = document.querySelector('#fullname').value
     const email = document.querySelector('#email').value
     const phone = document.querySelector('#phone').value
-    const amount = document.querySelector('#amount').value
+    // const amount = document.querySelector('#amount').value
+    const amount = document.querySelector('#total').innerHTML
     const address = document.querySelector('#address').value
     const bookId = {{ $book->id }}
 
@@ -138,6 +171,7 @@ function payWithPaystack() {
     const channel = ''
     const currency = 'NGN'
     const status = 'Pending'
+    // alert(amount)
 
     transactionInit(bookId, email, fullname, phone, amount, tranxId)
     
