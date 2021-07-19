@@ -51,7 +51,7 @@ class EventRegisterController extends Controller
         ]);
 
         // dd($request->email);
-        // Mail::to($request->email)->send(new RegisterEmail());
+        Mail::to($request->email)->send(new RegisterEmail());
 
         // Store
         $eventRegsiter =EventRegister::create([

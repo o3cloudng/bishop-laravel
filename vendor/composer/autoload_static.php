@@ -533,6 +533,7 @@ class ComposerStaticInit9e10298de8f332cbacac2cb4d4c727d2
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Mail\\ContactMail' => __DIR__ . '/../..' . '/app/Mail/ContactMail.php',
+        'App\\Mail\\RegisterEmail' => __DIR__ . '/../..' . '/app/Mail/RegisterEmail.php',
         'App\\Models\\Book' => __DIR__ . '/../..' . '/app/Models/Book.php',
         'App\\Models\\Event' => __DIR__ . '/../..' . '/app/Models/Event.php',
         'App\\Models\\EventRegister' => __DIR__ . '/../..' . '/app/Models/EventRegister.php',
