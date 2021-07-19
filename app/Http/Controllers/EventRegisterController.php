@@ -45,8 +45,8 @@ class EventRegisterController extends Controller
             'fullname' => 'required|max:255',
             'email' => 'required|email|max:255|confirmed|unique:event_registers',
             'phone' => 'required',
-            'buying' => 'required',
-            'price' => 'required',
+            'buying' => '',
+            'price' => '',
             'address' => ''
         ]);
 

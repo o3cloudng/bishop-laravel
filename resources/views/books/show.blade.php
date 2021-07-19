@@ -194,23 +194,7 @@ function payWithPaystack() {
         callback: function (response) {
             
             window.location = "{{ route('home') }}/verify/"+response.reference;
-            // https://api.paystack.co/transaction/verify/'.$reference; T571487985675064
-            // axios.get('https://api.paystack.co/transaction/verify/T571487985675064', {
-            //     // lastName: 'Flintstone'
-            // },
-            // {
-            //     headers: {
-            //         'Authorization': ""  // 
-            //     }
-            // })
-            // .then(function (response) {
-            //     console.log('Transaction was successful');
-            //     // window.location = "{{ route('home') }}/verify"+response.reference;
-            //     console.log(response.status);
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            // });
+            
         },
         onClose: function () {
             //when the user close the payment modal
