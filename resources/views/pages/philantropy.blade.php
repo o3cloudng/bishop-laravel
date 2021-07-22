@@ -27,7 +27,7 @@
                 </p>
                 <h4 class="text-2xl text-pink-800 font-bold leading-none my-3">He believes in helping the Needies</h4>
                 <p class="text-gray-600 text-justify leading-7">
-                He believes in helping the Needies who have genuine and honest requests. When Prophet TB Joshua died. Bishop Amoo said God told him to look at what he has done for the society in life time and Bishop Amoo was led to calculate what he had spent on philanthropic gesture this year alone amounting to about #3m naira.                
+                He believes in helping the Needies who have genuine and honest requests. When Prophet TB Joshua died, Bishop Amoo said God told him to look at what he has done for the society in his life time and Bishop Amoo was led to calculate what he had spent on philanthropic gesture this year alone amounting to Millions from January 2021 to June 2021.                
               </p>
              
             </div>
@@ -43,6 +43,22 @@
                         False requests won't be entertained and when quota is exhausted. There will be waiting period for another help.
                     </p>
             </div>
+            <div class="w-full p-6 bg-yellow-100 text-gray-600 text-justify leading-7 border-l-8 border-yellow-400 p-10">
+              <h3 class="text-3xl text-gray-800 font-bold leading-none mb-4">
+                Support
+            </h3>
+                  <p class="">
+                    If you are led by God to donate to this ministry, Please donate generously and cheerfully:<br>
+                    <h3 class="font-bold">NAIRA</h3>
+                    Bank: Fidelity <br/>
+                    AC/No: 6052124863, <br>
+                    Name: Olukunle O Amoo
+                    <h3 class="font-bold">USD</h3>
+                    AC/No: 5090781618 <br>
+                    Name: Olukunle O Amoo <br>
+                    swift Code: FIDTNGLA.
+                  </p>
+          </div>
           </div>
         </div>
       </section>
