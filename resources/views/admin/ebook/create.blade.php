@@ -1,16 +1,14 @@
-<x-guest-layout>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Create Book') }}
+        </h2>
+    </x-slot>
 
-    <body class="leading-normal tracking-normal text-white gradient"
-        style="font-family: 'Source Sans Pro', sans-serif;">
-        <div class="mt-20">&nbsp;</div>
-        <section class="bg-white border-b py-8">
-            <div class="container max-w-5xl mx-auto m-8">
-                <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                    Books
-                </h1>
-            </div>
-            <div class="px-10 ">
-                <div class="text-gray-600 space-y-4">
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
                     <form method="POST" action="{{ route('books.create') }}" enctype="multipart/form-data">
                         @csrf
 
@@ -72,6 +70,9 @@
                             </div>
                     </form>
                 </div>
-        </section>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
 
-</x-guest-layout>
+

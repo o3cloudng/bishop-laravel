@@ -6,24 +6,25 @@
       <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <!--Left Col-->
         <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-          <p class="uppercase tracking-loose w-full">Book Launch</p>
+          <p class="uppercase tracking-loose w-full">My Latest Book</p>
           <h1 class="my-4 text-5xl font-bold leading-tight">
             "The Other Side of Politics"
           </h1>
           <p class="leading-normal text-2xl mb-8">
-            Register now to reserve your seat (limited seats available) 
+            {{-- Register now to reserve your seat (limited seats available)  --}}
+            Get inspired by the deep thoughts presented in this amazing books.
           </p>
           <h1 class="text-2xl font-bold leading-normal w-full text-center md:text-left">
-            Launch Date:
+            Options
           </h1>
           <p class="w-full leading-normal text-1xl mb-4 flex justify-center text-center md:justify-start md:text-left">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-           1st of August, 2021, 1:00pm 
+           Order Online your hard copy or read online.
           </p>
-          <a href="{{ route('event.register') }}" class="mx-auto lg:mx-0 hover:no-underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-            Register Now
+          <a href="{{ route('books') }}" class="mx-auto lg:mx-0 hover:no-underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            View All Books
           </a>
         </div>
         <!--Right Col-->
@@ -68,7 +69,7 @@
             <p class="text-gray-600 mb-8 text-justify leading-8">
 
 
-A Versatile President with a demonstrated history of working in the mining & metalvs industry. Skilled in Oil & Gas Exploration, Exploration Management, Geosciences, Geophysics, Geochemistrty, Gold Projects, Polymetallic Mineral projects, Export Finance and Exploration Geology.
+A Versatile President with a demonstrated history of working in the mining & metal industry. Skilled in Oil & Gas Exploration, Exploration Management, Geosciences, Geophysics, Geochemistrty, Gold Projects, Polymetallic Mineral projects, Export Finance and Exploration Geology.
 
 Strong business development professional with a Doctor of Philosophy (PhD) focused in Counselling Psychology from TBU Washington. Bachelors of Applied Geophysics, Diploma in Mechanical Engineering and is an astute entrepreneur. 
               <br />

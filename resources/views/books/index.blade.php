@@ -20,7 +20,14 @@
                                 src="{{ Storage::url($book->cover) }}" alt="">
                                 <h3 class="text-center font-bold text-gray-600 my-5">
                                     <a href="{{ route('books') }}/{{ $book->id }}" class="mx-auto bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full mt-4 lg:mt-0 py-2 px-5 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                                        Buy &#8358;{{ number_format($book->price,2) }}</a></h3>
+                                        Buy &#8358;{{ number_format($book->price,2) }}
+                                    </a>
+                                    <br>
+                                    <br>
+                                    <a href="{{ route('showebook', $book->id) }}" class="mx-auto bg-black  text-white font-bold rounded-full mt-4 lg:mt-0 py-2 px-5 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                        Read online
+                                    </a>
+                                </h3>
                             </div>
                         </div>
                         @endforeach

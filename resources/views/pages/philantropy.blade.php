@@ -49,11 +49,11 @@
             </h3>
                   <p class="">
                     If you are led by God to donate to this ministry, Please donate generously and cheerfully:<br>
-                    <h3 class="font-bold">NAIRA</h3>
+                    <h3 class="font-bold">NAIRA (NGN)</h3>
                     Bank: Fidelity <br/>
                     AC/No: 6052124863, <br>
                     Name: Olukunle O Amoo
-                    <h3 class="font-bold">USD</h3>
+                    <h3 class="font-bold">DOLLAR (USD)</h3>
                     AC/No: 5090781618 <br>
                     Name: Olukunle O Amoo <br>
                     swift Code: FIDTNGLA.

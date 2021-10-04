@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\State;
+use App\Models\Chapter;
+use App\Models\Content;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
 
 class BookController extends Controller
 {
@@ -24,7 +28,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        return view('admin.create');
     }
 
     /**
@@ -132,7 +136,8 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        return $book;
     }
 
     /**
@@ -155,7 +160,62 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        // dd($book);
+        $delete = $book->delete();
+        if ($delete) {
+            session()->flash('msg', 'Book was deleted successfully.');
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function booklist()
+    {
+        $books = Book::all();
+        // dd($books);
+        return view('admin.books', ['books' => $books]);
+    }
+
+
+    public function chapter($id)
+    {
+        $book = Book::findOrFail($id);
+        $chapters = Content::where('book_id',$id)->paginate('4');
+        // dd($chapters);
+        return view('admin.ebook.index', ['book' => $book, 'chapters'=> $chapters]);
+    }
+
+
+    public function addchapter(Request $request)
+    {
+        // dd($request);
+        $this->validate($request, [
+            'chapter_title' => 'required',
+            'chapter_content' => 'required',
+            'book_id' => ''
+        ]);
+
+        // Store
+        $chapter =Content::create([
+            'chapter' => $request->chapter_title,
+            'chapter_content' => preg_replace('#<script(.*?)>(.*?)</script>#is', '', $request->chapter_content), # strip_tags($request->chapter_content) preg_replace('#<script(.*?)>(.*?)</script>#is', '', $html)
+            'book_id' => $request->book_id
+        ]);
+
+        // Sign in after registration
+        // auth()->attempt($request->only('email', 'password'));
+        // Redirect
+        if($chapter){
+            return back()->with('status', 'Chapter was added successfully.');
+        }
     }
 
 }

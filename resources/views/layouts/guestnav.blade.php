@@ -42,13 +42,31 @@
               <li class="mr-1">
                 <a class="inline-block text-gray-800 no-underline hover:text-gray-800 hover:text-underline py-2 px-2 {{ (request()->is('contact')) ? 'font-bold' : '' }}" href="{{ route('contact') }}">Contact</a>
               </li>
+              @if (Auth::guest())
+              <li class="mr-1">
+                <a class="inline-block text-gray-800 no-underline hover:text-gray-800 hover:text-underline py-2 px-2 {{ (request()->is('login')) ? 'font-bold' : '' }}" href="{{ route('login') }}">Login</a>
+              </li>
+              <a href="{{ route('register')}}"
+                id="navAction"
+                class="mx-auto lg:mx-0 hover:no-underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-6 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+              >
+                Sign Up
+              </a>
+              @else
+              <span class="mx-auto lg:mx-0 hover:no-underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 px-3 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+    
+                    <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-responsive-nav-link>
+                </form>
+              </span>
+              @endif
             </ul>
-            <a href="{{ route('event.register')}}"
-              id="navAction"
-              class="mx-auto lg:mx-0 hover:no-underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-            >
-              Register Now
-            </a>
           </div>
         </div>
         <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
