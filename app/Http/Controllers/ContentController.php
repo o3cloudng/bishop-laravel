@@ -143,27 +143,27 @@ class ContentController extends Controller
             // $tranxId = 12345;
 
             // if (!$checkRef) {
-            //     // Store
-            //     $payment = SubTransaction::create([
-            //         'user_id' => Auth::user()->id,
-            //         'book_id' => $book_id,
-            //         'amount' => $amount,
-            //         'reference' => $reference,
-            //         'tranxId' => '',
-            //         'subscription_end_time' => $subscription_end_time,
-            //         'status' => $status
-            //     ]);
-            //     // dd($payment);
-            //     if ($payment) {
-            //         return back()->with('status', 'Payment made successfully.');
-            //     } else {
-            //         return "No reference found.";
-            //     }
+                // Store
+                $payment = SubTransaction::create([
+                    'user_id' => Auth::user()->id,
+                    'book_id' => $book_id,
+                    'amount' => $amount,
+                    'reference' => $reference,
+                    'tranxId' => '',
+                    'subscription_end_time' => $subscription_end_time,
+                    'status' => $status
+                ]);
+                // dd($payment);
+                if ($payment) {
+                    return back()->with('status', 'Payment made successfully.');
+                } else {
+                    return "No reference found.";
+                }
             // }
 
 
+            return back()->with('status', 'No reference found.');
 
-            return back()->with('status', 'Payment made successfully.');
             //Perform necessary action
         } else {
             echo "Transaction was unsuccessful";
