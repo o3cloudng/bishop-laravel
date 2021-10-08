@@ -32,6 +32,7 @@
                                     class="mx-auto bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full mt-1 md:mt-4 lg:mt-0 py-2 px-5 shadow opacity-75">
                                     Read Now - &#8358;500 / Mo
                                 </Button>
+                                Test
                                 {{-- <button id="pay" type="button" onclick="transactionInit()"
                                 class="bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full lg:mt-0 py-2 px-4 shadow opacity-75">Buy Now</Button>
                          --}}
