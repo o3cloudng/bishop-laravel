@@ -162,6 +162,7 @@ function payWithPaystack() {
     // transactionInit(book_id, user_id, phone, amount, tranxId);
     
     let amountKobo = amount * 100;
+    alert("{{ env('PAYSTACK_PUBLIC_KEY') }}");
 
     // close
     var handler = PaystackPop.setup({ 

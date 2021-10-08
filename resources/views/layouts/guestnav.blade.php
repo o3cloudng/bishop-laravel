@@ -53,6 +53,14 @@
                 Sign Up
               </a>
               @else
+              @if(Auth::user()->role > 5)
+              <a href="{{ route('dashboard')}}"
+                id="navAction"
+                class="lg:mx-0 hover:no-underline mx-3 bg-white text-gray-800 rounded-full mt-4 lg:mt-0 py-2 px-6 shadow opacity-75 focus:outline-none focus:shadow-outline"
+                >
+                Dashboard
+                </a>
+              @endif
               <span class="mx-auto lg:mx-0 hover:no-underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 px-3 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
 
                   <form method="POST" action="{{ route('logout') }}">
