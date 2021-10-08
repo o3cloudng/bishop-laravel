@@ -162,11 +162,10 @@ function payWithPaystack() {
     // transactionInit(book_id, user_id, phone, amount, tranxId);
     
     let amountKobo = amount * 100;
-    alert("{{ env('PAYSTACK_PUBLIC_KEY') }}");
 
     // close
     var handler = PaystackPop.setup({ 
-        key: "{{ env('PAYSTACK_PUBLIC_KEY') }}", //put your public key here
+        key: "pk_live_7aae7be5786541d65a8798e6153bcdcd1caeb49d", //put your public key here
         email: "{{ Auth::user()->email }}", //put your customer's email here
         amount: amountKobo, //amount the customer is supposed to pay
         metadata: {
