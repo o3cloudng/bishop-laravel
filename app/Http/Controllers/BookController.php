@@ -78,7 +78,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
         $states = State::all();
-        // dd($book);
+        // dd($states);
         return view('books.show', ['book' => $book, 'states' => $states]);
     }
 

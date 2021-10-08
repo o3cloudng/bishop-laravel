@@ -54,7 +54,7 @@
                                                         <select name="state" id="state" class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="{{old('state')}}" onchange="ship()">
                                                             <option class="text-gray-700" value="">Delevery state</option>
                                                             @foreach ($states as $state )
-                                                                <option class="text-gray-700" value="{{ $state->name }}">{{ $state->name }}</option>                                                                
+                                                                <option class="text-gray-700" value="{{ $state->state }}">{{ $state->state }}</option>                                                                
                                                             @endforeach
                                                         </select>
                                                         {{-- <input class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Book cost = &#8358;{{ number_format($book->price, 2) }} " disabled /> --}}
@@ -179,7 +179,7 @@ function payWithPaystack() {
 
     // close
     var handler = PaystackPop.setup({ 
-        key: "{{ env('PAYSTACK_PUBLIC_KEY') }}", //put your public key here
+        key: "pk_live_7aae7be5786541d65a8798e6153bcdcd1caeb49d", //put your public key here
         email: email, //put your customer's email here
         amount: amountKobo, //amount the customer is supposed to pay
         metadata: {

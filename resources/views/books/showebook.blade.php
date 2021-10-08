@@ -30,7 +30,7 @@
                             <div class="">
                                 <button @click={show=true} type="button"
                                     class="mx-auto bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full mt-1 md:mt-4 lg:mt-0 py-2 px-5 shadow opacity-75">
-                                    Read Now - &#8358;500 / Mo
+                                    Subscribe Now - &#8358;500 / Mo
                                 </Button>
                                 Test
                                 {{-- <button id="pay" type="button" onclick="transactionInit()"
@@ -70,7 +70,7 @@
                                                     <button id="close" @click={show=false} type="button"
                                                     class="bg-gray-200 text-gray-500 rounded-full px-4 py-2 mr-1">Cancel</Button>
                                                 <button id="pay" type="button" onclick="payWithPaystack()"
-                                                    class="bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full lg:mt-0 py-2 px-4 shadow opacity-75">Buy Now</Button>
+                                                    class="bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full lg:mt-0 py-2 px-4 shadow opacity-75">Pay Now</Button>
                                                 </div>
                                                 </div>
                                         </div>
