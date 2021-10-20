@@ -22,7 +22,7 @@ class Book extends Model
         return $this->hasMany(Content::class);
     
     }
-    public function sub_transactions()
+    public function subtransactions()
     {
         return $this->hasMany(SubTransaction::class);
     }

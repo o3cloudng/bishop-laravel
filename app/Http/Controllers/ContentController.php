@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Book;
+use App\Models\User;
 use App\Models\Content;
 use Illuminate\Http\Request;
 use App\Models\SubTransaction;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -38,49 +40,80 @@ class ContentController extends Controller
     public function addcontent($id)
     {
         $content = Content::find($id);
-        // dd($content->book);
+        
         $chapters = Content::all();
-        // $book = Book::find($content->book_id);
-        // dd($book->content->chapter);
-        // dd($chapters);
+        
         return view('admin.ebook.content', ['content' => $content, 'chapters' => $chapters]);
     }
 
     public function showebook($id)
     {
         $book = Book::where('id', $id)->get();
-        // $chapters = Content::all();
-        // $subscription_end_time = Carbon::now()->addDays(30);
-        // dd($subscription_end_time);
-        return view('books.showebook', ['book' => $book[0]]);
+        
+        $sub = DB::table('sub_transactions')
+            ->where('book_id', '=', $id)
+            ->where('subscription_end_time', '>', Carbon::now())
+            ->where('user_id', '=', Auth::user()->id)
+            ->get();
+        
+        if(count($sub) > 0){
+            $sub = Carbon::parse($sub[0]->subscription_end_time);
+        } else {
+            $sub = "";
+        }
+        
+        return view('books.showebook', ['book' => $book[0], 'sub'=> $sub]);
     }
 
-    public function readonline($id)
+    public function readonline($book_id)
     {
-        $content = Content::find($id);
-        $book = Book::where('id', $content->book_id)->get();
+        $content = Content::find($book_id);
+        // Check Subscription status
+        $sub = DB::table('sub_transactions')
+        ->where('subscription_end_time', '>', Carbon::now())
+        ->where('user_id', '=', Auth::user()->id)
+        ->where('book_id', '=', $book_id)
+        ->get();
+
+        // dd($sub);
+
+        if(count($sub) > 0){
+            // return back()->with('status', 'You have not subscribed for the book.');
+            if(!$content){
+                return back()->with('status', 'This book has not been uploaded yet.');
+            }
+            $book = Book::where('id', $book_id)->get();
+            // $chapters = Content::where('book_id', '=',$book_id)->get();
+            
+            // dd($book);
+            return view('read.index', ['book' => $book[0]]);
+        }
         // dd($book[0]->cover);
-        $chapters = Content::all();
-        return view('pages.ebook', ['content' => $content, 'chapters' => $chapters, 'book' => $book[0]]);
     }
-    public function readchapter($id)
+    public function readchapter($book_id)
     {
-        $content = Content::find($id);
-        $book = Book::where('id', $content->book_id)->get();
+        $sub = DB::table('sub_transactions')
+        ->where('subscription_end_time', '>', Carbon::now())
+        ->where('user_id', '=', Auth::user()->id)
+        ->where('book_id', '=', $book_id)
+        ->get();
+
+        if(count($sub) > 0){
+            $chapters = DB::table('contents')
+                ->where('book_id', '=', $book_id)
+                ->get();
+                
+            $book = Book::where('id', '=', $book_id)->get();
+            return view('read.ebook', ['chapters' => $chapters, 'book' => $book[0]]);
+        } else {
+            return back()->with('status', 'This book has not been uploaded yet.');
+        }
+
         // dd($book[0]->cover);
-        $chapters = Content::all();
-        return view('pages.ebook', ['content' => $content, 'chapters' => $chapters, 'book' => $book[0]]);
     }
 
     public function sub_transaction(Request $request)
     {
-        // $request->validate([
-        //     'tranxId' => 'required',
-        //     'email' => 'required',
-        //     'amount' => 'required',
-        // ]);
-
-
         $subscription_end_time = Carbon::now()->addDays(30);
 
         // Store
@@ -127,17 +160,10 @@ class ContentController extends Controller
             // $bank = $result['data']['authorization']['bank'];
             $status = $result['data']['status'];
             $amount = $result['data']['amount'];
-            // dd($result['data']['authorization']['bank']);
-            // dd($refId);
-            // $payment = SubTransaction::where('tranxId', $refId)
-            // ->update([
-            //     'status' => $status,
-            //     'reference' => $reference,
-            // ]);
 
             $subscription_end_time = Carbon::now()->addDays(30);
 
-            $checkRef = SubTransaction::where('reference', $reference)->get();
+            // $checkRef = SubTransaction::where('reference', $reference)->get();
 
             // dd($status);
             // $tranxId = 12345;
@@ -155,9 +181,10 @@ class ContentController extends Controller
                 ]);
                 // dd($payment);
                 if ($payment) {
-                    return back()->with('status', 'Payment made successfully.');
+                    // return back()->with('status', 'Payment made successfully.');
+                    return redirect('myprofile')->with('status', 'Payment made successfully.');
                 } else {
-                    return "No reference found.";
+                    return back()->with('status', 'No reference found.');
                 }
             // }
 
@@ -225,5 +252,61 @@ class ContentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function myprofile(){
+        
+        $user_id = Auth::user()->id;
+        // $user = User::find($user_id);
+        $subs = SubTransaction::where('user_id', '=', $user_id)
+        ->where('subscription_end_time', '>', Carbon::now())
+        ->paginate(3);
+        
+        $books = DB::table('books AS b')
+            ->select([
+                'b.id','b.title', 'b.cover', 's.subscription_end_time', 's.user_id'
+            ])->join('sub_transactions as s', 'b.id', '=', 's.book_id')
+            ->where('s.user_id', '=', Auth::user()->id)
+            ->where('subscription_end_time', '>', Carbon::now())
+            ->get();
+           
+        return view('myprofile', ['mytranx' => $subs, 'mybooks' => $books]);
+    }
+
+    public function readbook($bookId, $chapter){
+
+        $sub = DB::table('sub_transactions')
+            ->where('subscription_end_time', '>', Carbon::now())
+            ->where('user_id', '=', Auth::user()->id)
+            ->where('book_id', '=', $bookId)
+            ->get();
+
+        if(count($sub) > 0){
+
+            $chapters = Content::where('book_id', '=', $bookId)
+                        ->get();
+            // dd($chapters);
+
+            $content = DB::table('books AS b')
+            ->select([
+                'b.id','b.title', 'b.cover', 'c.chapter', 'c.chapter_content'
+            ])->join('contents as c', 'b.id', '=', 'c.book_id')
+            ->where('book_id', '=', $bookId)
+            ->where('chapter', 'like', $chapter)
+            ->get();
+
+            // dd($content);
+            if($content == "") {
+                return "No content found.";
+            }else{
+                // return $content;
+                return view('read.ebook', ['book' => $content[0], 'chapters' => $chapters]);
+            }
+        } else {
+            return back()->with('status', 'No subscription found.');
+
+        }
+
     }
 }

@@ -4,28 +4,27 @@
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-       <title>Read Now</title>
+       <title>{{ $book->title }}</title>
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css">
        <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.0/alpine.js"></script>
    </head>
    <body>
        
-       
-       <div x-data="{ sidebarOpen: false }" class="flex overflow-x-hidden h-screen">
+       <div x-data="{ sidebarOpen: true }" class="flex overflow-x-hidden h-screen">
            <aside class="flex-shrink-0 w-64 flex flex-col border-r transition-all duration-300" :class="{ '-ml-64': !sidebarOpen }">
       <div class="bg-gray-900">
         <img class="rounded shadow-md inline"
-        src="{{ Storage::url($book->cover) }}" alt="">
+        src="{{ Storage::url($book->cover) }}" alt="{{ $book->title }}">
       </div>
       <nav class="flex-1 flex flex-col bg-white">
         @if($chapters->count() > 0)
-        @foreach($chapters as $chapter)
-            <a href="{{ route('readchapter', $chapter->id) }}" class="rounded overflow-hidden shadow-md px-6 py-2 text-gray-500 hover:text-gray-900">
-                {{ $chapter->chapter }}
-            </a>
-        @endforeach
-      @else
-        <div class="rounded overflow-hidden shadow-md px-6 py-2 text-gray-500 hover:text-gray-900">
+          @foreach($chapters as $chapter)
+              <a href="/readbook/{{ $book->id}}/{{ $chapter->chapter }}" class="rounded overflow-hidden shadow-md px-6 py-2 text-gray-500 hover:text-gray-900">
+                  {{ $chapter->chapter }}
+              </a>
+          @endforeach
+        @else
+        <div class="my-10 mx-10 rounded overflow-hidden shadow-md px-6 py-2 text-gray-500 hover:text-gray-900">
           No Chapter Found.
         </div>
       @endif
@@ -39,16 +38,24 @@
           </svg>
         </button>
         <button class="p-1 mr-4">
-            <a href="{{ route('home') }}"><img src="/images/svg/home.svg" style="fill:white !important; width:20px;" ></a></button>
+            <a href="{{ route('myprofile') }}"><img src="/images/svg/home.svg" style="fill:white !important; width:20px;" ></a></button>
         <h1 class="w-full text-2xl font-bold inline-flex float-root">
-            <span class="hidden md:block">Book Title:: &nbsp;</span> 
-            <span> {{ $content->chapter }} </span>
-            <small>&nbsp; ({{ $book->title }})</small>
+            <span class="hidden md:block">{{ $book->title }}
             <span class="float-right">&nbsp;</span>
         </h1>
     </header>
-    <main class="p-4 content-justify">
-        {!! $content->chapter_content !!}
+    <main class="w-full md:w-2/3 p-10 h-auto shadow my-10 mx-auto border border-gray-100 rounded content-justify">
+      @if($chapters->count() > 0)
+        {{ $book->chapter }}
+        <br>
+        <hr>
+        <br>
+        {!! $book->chapter_content !!}
+      @else
+      <div class="my-10 mx-10 rounded overflow-hidden shadow-md px-6 py-2 text-gray-500 hover:text-gray-900">
+        No Content available.
+      </div>
+      @endif
     </main>
 </div>
 </div>

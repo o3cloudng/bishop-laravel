@@ -25,30 +25,30 @@
             </div>
             <div class="w-3/3 sm:w-1/3 p-1 flex flex-wrap -mx-1">
               <div class="md:w-1/2 px-2 mb-4">
-                  <img class="rounded shadow-md" src="{{ asset('images/pages/min1.jpg') }}" alt="">
+                  <img class="rounded shadow-md" src="{{ asset('images/pages/min1.jpg') }}" alt="Bishop Kunle Amoo Ministry">
               </div>
               <div class="md:w-1/2 px-2 mb-4">
-                  <img class="rounded shadow-md" src="{{ asset('images/pages/min2.jpg') }}" alt="">
+                  <img class="rounded shadow-md" src="{{ asset('images/pages/min2.jpg') }}" alt="Bishop Kunle Amoo Ministry">
               </div>
               <div class="md:w-1/2 px-2 mb-4">
-                  <img class="rounded shadow-md" src="{{ asset('images/pages/min3.jpg') }}" alt="">
+                  <img class="rounded shadow-md" src="{{ asset('images/pages/min3.jpg') }}" alt="Bishop Kunle Amoo Ministry">
               </div>
               <div class="md:w-1/2 px-2 mb-4">
-                  <img class="rounded shadow-md" src="{{ asset('images/pages/min4.jpg') }}" alt="">
+                  <img class="rounded shadow-md" src="{{ asset('images/pages/min4.jpg') }}" alt="Bishop Kunle Amoo Ministry">
               </div>
           </div>
           <div class="w-3/3 sm:w-3/3 p-6 md:p-1 flex flex-wrap -mx-1">
               <div class="md:w-1/4 px-2 mb-4">
-                  <img class="rounded shadow-md" src="{{ asset('images/pages/min5.jpg') }}" alt="">
+                  <img class="rounded shadow-md" src="{{ asset('images/pages/min5.jpg') }}" alt="Bishop Kunle Amoo Ministry">
               </div>
               <div class="md:w-1/4 px-2 mb-4">
-                  <img class="rounded shadow-md" src="{{ asset('images/pages/min6.jpg') }}" alt="">
+                  <img class="rounded shadow-md" src="{{ asset('images/pages/min6.jpg') }}" alt="Bishop Kunle Amoo Ministry">
               </div>
               <div class="md:w-1/4 px-2 mb-4">
-                  <img class="rounded shadow-md" src="{{ asset('images/pages/min7.jpg') }}" alt="">
+                  <img class="rounded shadow-md" src="{{ asset('images/pages/min7.jpg') }}" alt="Bishop Kunle Amoo Ministry">
               </div>
               <div class="md:w-1/4 px-2 mb-4">
-                  <img class="rounded shadow-md" src="{{ asset('images/pages/min1.jpg') }}" alt="">
+                  <img class="rounded shadow-md" src="{{ asset('images/pages/min1.jpg') }}" alt="Bishop Kunle Amoo Ministry">
               </div>
           </div>
           </div>

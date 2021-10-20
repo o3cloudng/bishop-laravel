@@ -64,18 +64,20 @@ Route::group(['middleware' => 'auth'], function(){
     // List of Event Registrations
     Route::get('/event/list', [EventRegisterController::class, 'index'])->name('register.list');
 
-    Route::get('/ebook/online/{id}', [ContentController::class, 'readonline'])->name('readonline');
-    Route::post('/ebook/online/{id}', [ContentController::class, 'readonline']);
-    Route::get('/ebooks/content/{id}', [ContentController::class, 'readchapter'])->name('readchapter');
     Route::get('/ebook/show/{id}', [ContentController::class, 'showebook'])->name('showebook');
     Route::post('/ebook/show/{id}', [ContentController::class, 'sub_transaction']);
-
+    
+    Route::get('/myprofile', [ContentController::class, 'myprofile'])->name('myprofile');
+    
     Route::post('/subscription', [ContentController::class, 'sub_transaction']);
     Route::get('/ebook/verify/{reference}', [ContentController::class, 'verify']);
+    // READ BOOK ONLINE
+    Route::get('/ebook/online/{book_id}', [ContentController::class, 'readonline'])->name('readonline');
+    Route::post('/ebook/online/{id}', [ContentController::class, 'readonline']);
+    Route::get('/ebooks/content/{id}', [ContentController::class, 'readchapter'])->name('readchapter');
+    // Route::get('readonline/{id}', [ContentController::class, 'readonline'])->name('readonline');
+    Route::get('/readbook/{bookId}/{chapter}', [ContentController::class, 'readbook'])->name('readbook');
 });
-Route::get('/readonline/{id}', function(){
-    return view('pages.ebook');
-})->name('readonline');
 
 
 // 

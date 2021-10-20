@@ -18,21 +18,33 @@
                 <div class="border p-5 md:p-5 md:grid grid-cols-1 md:grid-cols-3 gap-5">
                     <div class="col-span-1">
                         <img class="rounded shadow-md focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-                            src="{{ Storage::url($book->cover) }}" alt="">
+                            src="{{ Storage::url($book->cover) }}" alt="{{ $book->title }}">
                     </div>
                     <div class="col-span-2 px-5 md:px-20 space-y-5">
                         <h1 class="text-3xl md:text-4xl text-gray-800 font-bold pt-1 md:pt-20 mt-10 md:mt-20">{{ $book->title }}</h1>
                         <p class="text-gray-400">{{ $book->description }}</p>
+                        @if($sub)
                         <p class="text-gray-400">
-                            Get access to read this book online.</p>
+                            You have already subscribed for this book and your subscription expires on {{ $sub->diffForHumans() }}.</p>
+                        <p class="text-gray-400">
+                            <a href="{{ route('myprofile') }}"
+                                class="w-full mx-auto bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded mt-1 md:mt-10 lg:mt-0 py-2 px-5 shadow opacity-75">
+                               Continue reading
+                            </a>
+                        </p>
+                        @else
+                        <p class="text-gray-400">
+                            Get one month access to read this book online for just &#8358;500 only.</p>
+                        @endif
 
                         <div x-data="{ show: false }">
                             <div class="">
+                                @if(!$sub)
                                 <button @click={show=true} type="button"
                                     class="mx-auto bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full mt-1 md:mt-4 lg:mt-0 py-2 px-5 shadow opacity-75">
                                     Subscribe Now - &#8358;500 / Mo
                                 </Button>
-                                Test
+                                @endif
                                 {{-- <button id="pay" type="button" onclick="transactionInit()"
                                 class="bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full lg:mt-0 py-2 px-4 shadow opacity-75">Buy Now</Button>
                          --}}
@@ -166,7 +178,7 @@ function payWithPaystack() {
 
     // close
     var handler = PaystackPop.setup({ 
-        key: "pk_live_7aae7be5786541d65a8798e6153bcdcd1caeb49d", //put your public key here
+        key: "pk_test_063f6653ba930b0ecce1e2b360dbfd6bf66389e5", //put your public key here
         email: "{{ Auth::user()->email }}", //put your customer's email here
         amount: amountKobo, //amount the customer is supposed to pay
         metadata: {

@@ -25,7 +25,7 @@
                                     <br>
                                     <br>
                                     <a href="{{ route('showebook', $book->id) }}" class="mx-auto bg-black  text-white font-bold rounded-full mt-4 lg:mt-0 py-2 px-5 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                                        Read online
+                                        <small>Read online &#8358;500</small>
                                     </a>
                                 </h3>
                             </div>
