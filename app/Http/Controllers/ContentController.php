@@ -142,51 +142,40 @@ class ContentController extends Controller
 
         // PAYSTACK_SECRET_KEY  
 
-        $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))
+        $response = Http::withToken("sk_test_c69238befe042959328e0c5dc7030eb843d2824b")
             ->get('https://api.paystack.co/transaction/verify/' . $reference);
 
         $result = $response->json();
         // dd($result);
 
         if (($result['status'] == true) && ($result['data']['status'] == 'success')) {
-
-            // $refId = $result['data']['metadata']['custom_fields'][0]['refId'];
-            // $phone = $result['data']['metadata']['custom_fields'][0]['phone'];
-            // $fullname = $result['data']['metadata']['custom_fields'][0]['display_name'];
-            // $refId = $result['data']['metadata']['custom_fields'][0]['variable_name'];
+            
             $book_id = $result['data']['metadata']['custom_fields'][0]['variable_name'];
             $reference = $result['data']['reference'];
-            // $channel = $result['data']['channel'];
-            // $bank = $result['data']['authorization']['bank'];
             $status = $result['data']['status'];
             $amount = $result['data']['amount'];
 
             $subscription_end_time = Carbon::now()->addDays(30);
+            $amount = str_replace("00", "0", $amount);
 
-            // $checkRef = SubTransaction::where('reference', $reference)->get();
-
-            // dd($status);
-            // $tranxId = 12345;
-
-            // if (!$checkRef) {
-                // Store
-                $payment = SubTransaction::create([
-                    'user_id' => Auth::user()->id,
-                    'book_id' => $book_id,
-                    'amount' => $amount,
-                    'reference' => $reference,
-                    'tranxId' => '',
-                    'subscription_end_time' => $subscription_end_time,
-                    'status' => $status
-                ]);
-                // dd($payment);
-                if ($payment) {
-                    // return back()->with('status', 'Payment made successfully.');
-                    return redirect('myprofile')->with('status', 'Payment made successfully.');
-                } else {
-                    return back()->with('status', 'No reference found.');
-                }
-            // }
+            $payment = DB::table('sub_transactions')->insert([
+                'user_id' => Auth::user()->id,
+                'book_id' => $book_id,
+                'amount' => $amount,
+                'reference' => $reference,
+                'tranxId' => '',
+                'subscription_end_time' => $subscription_end_time,
+                'status' => $status,
+                "created_at" =>  Carbon::now(), # new \Datetime()
+                "updated_at" => Carbon::now(),  # new \Datetime()
+            ], true);
+            // dd($payment);
+            if ($payment) {
+                // return back()->with('status', 'Payment made successfully.');
+                return redirect('myprofile')->with('status', 'Payment made successfully.');
+            } else {
+                return back()->with('status', 'No reference found.');
+            }
 
 
             return back()->with('status', 'No reference found.');

@@ -74,7 +74,7 @@
                         <tbody>
                             @foreach ($mytranx as $tranx)
                             <tr>
-                                <td>{{ number_format($tranx->amount) }}</td>
+                                <td>{{ $tranx->amount }}</td>
                                 <td>{{ $tranx->reference }}</td>
                                 <td>{{ $tranx->created_at->diffForHumans() }}</td>
                                 <td>{{ $tranx->created_at }}</td>
