@@ -12,12 +12,12 @@
         {!! Session::has('msg') ? Session::get("msg") : '' !!}
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
               <div class="p-6 bg-white border-b border-blue-100">
-                <div class="border p-5 md:p-5 md:grid grid-cols-1 md:grid-cols-4 gap-5">
+                <div class="border p-5 md:p-5 md:grid grid-cols-1 md:grid-cols-6 gap-5">
                   <div class="col-span-1">
                       <img class="rounded shadow-md focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
                           src="{{ Storage::url($book->cover) }}" alt="">
                   </div>
-                  <div class="col-span-2 px-5 md:px-20 space-y-2">
+                  <div class="col-span-3 px-5 md:px-20 space-y-2">
                     <!-- Session Status -->
                     <x-auth-session-status class="mb-4" :status="session('status')" />
     
@@ -79,7 +79,7 @@
                           </div>
                       </div>
                   </div>
-                  <div class="col-span-1 px-1 md:px-2 space-y-2">
+                  <div class="col-span-2 px-1 md:px-2 space-y-2">
                     <h1 class="font-bold text-gray-900 border-b border-grey-200 my-3 py-2">Table of Contents</h1>
                     @if($chapters->count() > 0)
                       @foreach($chapters as $chapter)

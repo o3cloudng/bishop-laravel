@@ -67,7 +67,7 @@ class ContentController extends Controller
 
     public function readonline($book_id)
     {
-        $content = Content::find($book_id);
+        $content = Content::where('book_id', '=', $book_id)->get();
         // Check Subscription status
         $sub = DB::table('sub_transactions')
         ->where('subscription_end_time', '>', Carbon::now())
@@ -75,7 +75,7 @@ class ContentController extends Controller
         ->where('book_id', '=', $book_id)
         ->get();
 
-        // dd($sub);
+        dd($content);
 
         if(count($sub) > 0){
             // return back()->with('status', 'You have not subscribed for the book.');

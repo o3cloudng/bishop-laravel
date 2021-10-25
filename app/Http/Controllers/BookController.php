@@ -188,7 +188,7 @@ class BookController extends Controller
     public function chapter($id)
     {
         $book = Book::findOrFail($id);
-        $chapters = Content::where('book_id',$id)->paginate('4');
+        $chapters = Content::where('book_id',$id)->paginate('8');
         // dd($chapters);
         return view('admin.ebook.index', ['book' => $book, 'chapters'=> $chapters]);
     }
