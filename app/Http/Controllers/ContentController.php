@@ -75,7 +75,7 @@ class ContentController extends Controller
         ->where('book_id', '=', $book_id)
         ->get();
 
-        dd($content);
+        // dd($content);
 
         if(count($sub) > 0){
             // return back()->with('status', 'You have not subscribed for the book.');
