@@ -46,10 +46,6 @@
     </header>
     <main class="w-full md:w-2/3 p-10 h-auto shadow my-10 mx-auto border border-gray-100 rounded content-justify">
       @if($chapters->count() > 0)
-        {{ $book->chapter }}
-        <br>
-        <hr>
-        <br>
         {!! $book->chapter_content !!}
       @else
       <div class="my-10 mx-10 rounded overflow-hidden shadow-md px-6 py-2 text-gray-500 hover:text-gray-900">
