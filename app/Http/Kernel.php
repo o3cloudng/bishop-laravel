@@ -23,6 +23,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\Cors::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         // \Fruitcake\Cors\HandleCors::class,
+        // 'checkadmin' => \App\Http\Middleware\CheckAdmin::class,
     ];
 
     /**
@@ -45,6 +46,9 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'checkadmin' => [
+            \App\Http\Middleware\CheckAdmin::class,
+        ]
     ];
 
     /**

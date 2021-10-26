@@ -22,24 +22,6 @@ Route::get('/philantropy', [PageController::class, 'philantropy'])->name('philan
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact', [PageController::class, 'email']);
 
-// Books
-// Route::resource('/books', BookController::class);
-Route::get('/books', [BookController::class, 'index'])->name('books');
-Route::get('/books/add', [BookController::class, 'create'])->name('books.create');
-Route::post('/books/add', [BookController::class, 'store']);
-Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
-
-# Admin
-Route::get('/booklist', [BookController::class, 'booklist'])->name('booklist');
-Route::get('/books/edit/{id}', [BookController::class, 'edit'])->name('books.edit');
-Route::post('/books/update/{id}', [BookController::class, 'update']);
-// Route::get('/books/delete/{id}', [BookController::class, 'destroy'])->name('books.destroy');
-Route::post('/books/delete', [BookController::class, 'destroy'])->name('books.destroy');
-
-Route::get('/books/admin/show/{id}', [BookController::class, 'chapter'])->name('admin.book.show');
-Route::post('/books/admin/show/{id}', [BookController::class, 'addchapter']);
-Route::get('/books/admin/content/{id}', [ContentController::class, 'addcontent'])->name('admin.book.addcontent');
-
 // Verify Transaction
 Route::get('/verify/{reference}', [BookController::class, 'verify']);
 
@@ -51,19 +33,13 @@ Route::post('/addevent', [EventController::class, 'store']);
 Route::get('/event/register', [EventRegisterController::class, 'create'])->name('event.register');
 Route::post('/event/register', [EventRegisterController::class, 'store']);
 
+
 // Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
+    //     return view('dashboard');
+    // })->middleware(['auth'])->name('dashboard');
+    
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/dashboard', function(){
-        return view('dashboard');
-    })->name('dashboard');
-    Route::view('profile', 'auth.profile')->name('profile');
-    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
-    // List of Event Registrations
-    Route::get('/event/list', [EventRegisterController::class, 'index'])->name('register.list');
-
+        
     Route::get('/ebook/show/{id}', [ContentController::class, 'showebook'])->name('showebook');
     Route::post('/ebook/show/{id}', [ContentController::class, 'sub_transaction']);
     
@@ -71,12 +47,41 @@ Route::group(['middleware' => 'auth'], function(){
     
     Route::post('/subscription', [ContentController::class, 'sub_transaction']);
     Route::get('/ebook/verify/{reference}', [ContentController::class, 'verify']);
+
+    Route::view('profile', 'auth.profile')->name('profile');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+    // List of Event Registrations
+    Route::get('/event/list', [EventRegisterController::class, 'index'])->name('register.list');
+    // Route::get('readonline/{id}', [ContentController::class, 'readonline'])->name('readonline');
+    Route::get('/readbook/{bookId}/{chapter}', [ContentController::class, 'readbook'])->name('readbook');
+    Route::get('/books/admin/show/{id}', [BookController::class, 'chapter'])->name('admin.book.show');
+    Route::post('/books/admin/show/{id}', [BookController::class, 'addchapter']);
+    Route::get('/books/admin/content/{id}', [ContentController::class, 'addcontent'])->name('admin.book.addcontent');
+
     // READ BOOK ONLINE
     Route::get('/ebook/online/{book_id}', [ContentController::class, 'readonline'])->name('readonline');
     Route::post('/ebook/online/{id}', [ContentController::class, 'readonline']);
     Route::get('/ebooks/content/{id}', [ContentController::class, 'readchapter'])->name('readchapter');
-    // Route::get('readonline/{id}', [ContentController::class, 'readonline'])->name('readonline');
-    Route::get('/readbook/{bookId}/{chapter}', [ContentController::class, 'readbook'])->name('readbook');
+
+
+    Route::group(['middleware' => 'checkadmin'], function(){
+
+        Route::get('/dashboard', function(){
+            return view('dashboard');
+        })->name('dashboard');
+        # Admin
+        Route::get('/booklist', [BookController::class, 'booklist'])->name('booklist');
+        Route::get('/books/edit/{id}', [BookController::class, 'edit'])->name('books.edit');
+        Route::post('/books/update/{id}', [BookController::class, 'update']);
+        // Route::get('/books/delete/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+        Route::post('/books/delete', [BookController::class, 'destroy'])->name('books.destroy');
+
+        // Books
+        Route::get('/books', [BookController::class, 'index'])->name('books');
+        Route::get('/books/add', [BookController::class, 'create'])->name('books.create');
+        Route::post('/books/add', [BookController::class, 'store']);
+        Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
+    });
 });
 
 
