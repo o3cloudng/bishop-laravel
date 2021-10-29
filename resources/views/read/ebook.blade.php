@@ -8,7 +8,7 @@
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css">
        <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.0/alpine.js"></script>
    </head>
-   <body>
+   <body class="h-screen">
        
        <div x-data="{ sidebarOpen: true }" class="flex overflow-x-hidden h-screen">
            <aside class="flex-shrink-0 w-64 flex flex-col border-r transition-all duration-300" :class="{ '-ml-64': !sidebarOpen }">
@@ -30,8 +30,8 @@
       @endif
       </nav>
     </aside>
-    <div class="flex-1">
-        <header class="flex items-center p-4 text-semibold text-gray-100 bg-gradient-to-r from-pink-700 to-red-500">
+    <div class="flex-1 flex-1 overflow-y-auto">
+        <header style="position: fixed; width:100%; overflow:hidden;" class="flex items-center p-4 text-semibold text-gray-100 bg-gradient-to-r from-pink-700 to-red-500">
             <button class="p-1 mr-4" @click="sidebarOpen = !sidebarOpen">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
