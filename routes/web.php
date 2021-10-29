@@ -8,6 +8,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EventRegisterController;
 
@@ -67,9 +68,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['middleware' => 'checkadmin'], function(){
 
-        Route::get('/dashboard', function(){
-            return view('dashboard');
-        })->name('dashboard');
+        // Route::get('/dashboard', function(){
+        //     return view('dashboard');
+        // })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         # Admin
         Route::get('/booklist', [BookController::class, 'booklist'])->name('booklist');
         Route::get('/books/edit/{id}', [BookController::class, 'edit'])->name('books.edit');
