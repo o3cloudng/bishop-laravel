@@ -21,9 +21,9 @@ Route::get('/ministry', [PageController::class, 'ministry'])->name('ministry');
 Route::get('/philantropy', [PageController::class, 'philantropy'])->name('philantropy');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact', [PageController::class, 'email']);
+Route::get('/books', [BookController::class, 'index'])->name('books');
 
 // Verify Transaction
-Route::get('/verify/{reference}', [BookController::class, 'verify']);
 
 
 Route::get('/', [PageController::class, 'index'])->name('home');
@@ -41,6 +41,7 @@ Route::post('/event/register', [EventRegisterController::class, 'store']);
 Route::group(['middleware' => 'auth'], function(){
         
     Route::get('/ebook/show/{id}', [ContentController::class, 'showebook'])->name('showebook');
+    Route::get('/verify/{reference}', [BookController::class, 'verify']);
     Route::post('/ebook/show/{id}', [ContentController::class, 'sub_transaction']);
     
     Route::get('/myprofile', [ContentController::class, 'myprofile'])->name('myprofile');
@@ -77,7 +78,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/books/delete', [BookController::class, 'destroy'])->name('books.destroy');
 
         // Books
-        Route::get('/books', [BookController::class, 'index'])->name('books');
+        
         Route::get('/books/add', [BookController::class, 'create'])->name('books.create');
         Route::post('/books/add', [BookController::class, 'store']);
         Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
