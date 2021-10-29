@@ -5,6 +5,9 @@
             {{-- <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a> --}}
+            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+                Sign Up
+            </h1> 
         </x-slot>
 
         <!-- Validation Errors -->
@@ -47,12 +50,12 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                <a class="bg-gray-200 py-2 px-3 rounded text-sm text-gray-800 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already Signed Up? Login') }}
                 </a>
 
                 <x-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Sign Up') }}
                 </x-button>
             </div>
         </form>
