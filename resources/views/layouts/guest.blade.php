@@ -85,7 +85,7 @@
       <div class="w-full md:flex md:flex-row-3 p-2 md:p-6 md:space-x-4">
         <div class="md:flex-1 mb-6 text-black space-y-4">
           <h3 class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-2xl" href="#">
-            Launch Address
+            Address
           </h3>
           <p class="flex p-2 bg-gray-700 w-auto h-auto border-gray-300 text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
@@ -113,12 +113,11 @@
             </p>
         </div>
         <div class="md:flex-1 space-y-4">
-          <p class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-2xl">Map</p>
+          {{-- <p class="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-2xl">Map</p>
           <div class="mapouter">
             <div class="gmap_canvas"><iframe width="100%" height="250" id="gmap_canvas"
                 src="https://maps.google.com/maps?q=%20Felicia%20Hall,%20Jogor%20Center%20Ibadan,%20West%20Africa&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                {{-- <a href="https://fmovies-online.net">fmoviews</a><br> --}}
               <style>
                 .mapouter {
                   position: relative;
@@ -127,7 +126,6 @@
                   width: 100%;
                 }
               </style>
-              {{-- <a href="https://www.embedgooglemap.net">embedgooglemap.net</a> --}}
               <style>
                 .gmap_canvas {
                   overflow: hidden;
@@ -137,7 +135,7 @@
                 }
               </style>
             </div>
-          </div>
+          </div> --}}
         </div>
         {{-- <div class="flex-1">
           <p class="uppercase text-gray-500 md:mb-6">Legal</p>
