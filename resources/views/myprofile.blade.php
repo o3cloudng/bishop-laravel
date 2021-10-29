@@ -25,13 +25,20 @@
 
                 <div class="container mx-auto">
                     <div class="md:grid-cols-3 md:gap-3 text-gray-500">
-                        <div class="md: w-full mx-auto md:col-span-1 border border-gray-200 rounded bg-gray-100 p-5">
-                            <ul class="md:divide-y-2 md:divide-gray-200">
-                                Welcome <span class="p-2 font-bold rounded w-full text-grey-400">{{ Auth::user()->name }} ({{ Auth::user()->email }})
+                        <div class="bg-white md:w-full mx-auto md:col-span-1 border border-gray-200 rounded p-5">
+                            <p class="md:divide-y-2 md:divide-gray-200">
+                                Welcome <span class="p-2 rounded w-full text-grey-400">{{ Auth::user()->name }} ({{ Auth::user()->email }})
+                            </p>
+                            <p>
+                                @if(count($mybooks) > 0)
+                                    You have {{ count($mybooks) }} books in your subscription.
+                                @else
+                                    You do not have any book yet. You can find more book <a class="underline" href="{{ route('books') }}">here</a>
+                                @endif
+                            </p>
 
                                     
                                 {{-- <li class="p-3"> Role: <span class="p-2 border font-bold rounded w-full text-grey-400">{{ Auth::user()->role }}</span></li> --}}
-                            </ul>
                         </div>
                         <div class="mt-4 md:mt-0 col-span-2 border border-gray-200 rounded bg-gray-100 p-3">
                             @if(count($mybooks) > 0)
@@ -39,8 +46,10 @@
                                     @foreach ($mybooks as $mybook)
                                     <div class="col-span-1 border border-gray-100 rounded bg-white p-4">
                                         {{-- <h1 class="font-bold">My Books</h1> --}}
-                                        <img class="mb-5 w-full h-70 rounded shadow-md focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-                                        src='{{ Storage::url($mybook->cover) }}' alt="{{ $mybook->title }}">  
+                                        <a href="{{ route('readonline', $mybook->id) }}">
+                                            <img class="mb-5 w-full h-70 rounded shadow-md focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                                            src='{{ Storage::url($mybook->cover) }}' alt="{{ $mybook->title }}">  
+                                        </a>
                                         <a href="{{ route('readonline', $mybook->id) }}"
                                             class="w-full mx-auto bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded mt-1 md:mt-10 lg:mt-0 py-2 px-5 shadow opacity-75">
                                             Read now 
@@ -73,26 +82,26 @@
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Amount
                                     </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Reference
                                     </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Age
                                     </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Date Paid
                                     </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Status
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
+                                @foreach ($mytranx as $tranx)                                    
                                 <tr>
-                                    @foreach ($mytranx as $tranx)                                    
                                     <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
