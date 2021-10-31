@@ -65,8 +65,11 @@
                         <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Email
                         </th>
-                        <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {{-- <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Amount
+                        </th> --}}
+                        <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Book Title
                         </th>
                         <th scope="col" class="font-bold px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Reference
@@ -91,8 +94,11 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-gray-900">{{ $tranx->email }}</div>
                             </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
+                        {{-- <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-900">{{ number_format($tranx->amount, 2) }}</div>
+                        </td> --}}
+                        <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">{{ $tranx->title }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-900">{{ $tranx->reference }}</div>

@@ -32,8 +32,9 @@ class DashboardController extends Controller
 
         $dtranx = DB::table('sub_transactions AS s')
             ->select([
-                's.user_id', 's.amount', 's.reference', 's.subscription_end_time', 's.created_at', 's.status', 'u.name', 'u.email'
+                's.user_id', 's.amount', 's.reference', 's.subscription_end_time', 's.created_at', 's.status', 'u.name', 'u.email','b.title'
             ])->join('users as u', 's.user_id', '=', 'u.id')
+            ->join('books as b','s.book_id', '=', 'b.id')
             ->where('u.role', '<', 10)
             ->orderBy('created_at', 'desc')
             ->paginate(5);
