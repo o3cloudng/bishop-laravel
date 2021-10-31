@@ -142,7 +142,7 @@ class ContentController extends Controller
 
         // PAYSTACK_SECRET_KEY  
 
-        $response = Http::withToken("sk_test_c69238befe042959328e0c5dc7030eb843d2824b")
+        $response = Http::withToken("sk_live_a7fc176e95adba988f7c90d3395a11b45c30c5d6")
             ->get('https://api.paystack.co/transaction/verify/' . $reference);
 
         $result = $response->json();
