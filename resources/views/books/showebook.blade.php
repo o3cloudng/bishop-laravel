@@ -25,16 +25,16 @@
                         <p class="text-gray-400">{{ $book->description }}</p>
                         @if($sub)
                         <p class="text-gray-400">
-                            You have already subscribed for this book and your subscription expires on {{ $sub->diffForHumans() }}.</p>
+                            You have already subscribed for this book; so, enjoy your readings.</p>
                         <p class="text-gray-400">
-                            <a href="{{ route('myprofile') }}"
+                            <a href="{{ route('readchapter', $book->id) }}"
                                 class="w-full mx-auto bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded mt-1 md:mt-10 lg:mt-0 py-2 px-5 shadow opacity-75">
                                Continue reading
                             </a>
                         </p>
                         @else
                         <p class="text-gray-400">
-                            Get one month access to read this book online for just &#8358;500 only.</p>
+                            Get full access forever to read this book online for just &#8358;{{ number_format($book->ebookprice) }} only.</p>
                         @endif
 
                         <div x-data="{ show: false }">
@@ -42,13 +42,14 @@
                                 @if(!$sub)
                                 <button @click={show=true} type="button"
                                     class="mx-auto bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full mt-1 md:mt-4 lg:mt-0 py-2 px-5 shadow opacity-75">
-                                    Subscribe Now - &#8358;500 / Mo
+                                    Subscribe Now - &#8358;{{ number_format($book->ebookprice) }}
                                 </Button>
                                 @endif
                                 {{-- <button id="pay" type="button" onclick="transactionInit()"
                                 class="bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-full lg:mt-0 py-2 px-4 shadow opacity-75">Buy Now</Button>
                          --}}
                             </div>
+                            @if(!$sub)
                             <div x-show="show" tabindex="0"
                                 class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed">
                                 <div @click.away="show = false" class="z-50 relative p-3 mx-auto my-0 max-w-full"
@@ -56,7 +57,7 @@
                                     <div class="bg-white rounded shadow-lg border flex flex-col overflow-hidden text-gray-500">
                                         <button @click={show=false}
                                             class="fill-current h-6 w-6 absolute right-0 top-0 m-6 font-3xl font-bold">&times;</button>
-                                        <div class="px-6 py-3 text-xl border-b font-bold">Make Payment (<span id ="book">&#8358;500</span>)</div>
+                                        <div class="px-6 py-3 text-xl border-b font-bold">Make Payment (<span id ="book">&#8358;{{ number_format($book->ebookprice) }}</span>)</div>
                                         <div class="p-6 flex-grow">
                                             <form action="/ebook/show/" method="POST">
                                                 {{-- @csrf --}}
@@ -69,7 +70,7 @@
 
                                                         <input class="shadow border rounded w-full md:w-50 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="tel" name="phone" value="{{old('phone')}}" id="phone" placeholder="Phone number (Optional)" />
 
-                                                        <input class="" type="hidden" name="amount" value="500" id="amount"/>
+                                                        <input class="" type="hidden" name="amount" value="{{ $book->ebookprice }}" id="amount"/>
                                                     </div>
                                                     <div></div>
                                                 </div>
@@ -77,7 +78,7 @@
                                         </div>
                                         <div class="px-6 py-3 border-t">
                                             <div class="flex justify-between">
-                                                <button class="font-bold text-red-500 rounded border-2 border-red-200 px-4 py-2">Total: &#8358;<span id="total">500</span></button>
+                                                <button class="font-bold text-red-500 rounded border-2 border-red-200 px-4 py-2">Total: &#8358;<span id="total">{{ number_format($book->ebookprice) }}</span></button>
                                                 <div>
                                                     <button id="close" @click={show=false} type="button"
                                                     class="bg-gray-200 text-gray-500 rounded-full px-4 py-2 mr-1">Cancel</Button>
@@ -92,6 +93,7 @@
                                     class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-black opacity-50">
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -176,10 +178,9 @@ function payWithPaystack() {
     
     let amountKobo = amount * 100;
 
-    // close
-    // Test_key: pk_test_063f6653ba930b0ecce1e2b360dbfd6bf66389e5
+    // close {{ env('PAYSTACK_PUBLIC_KEY')}}
     var handler = PaystackPop.setup({ 
-        key: "pk_live_7aae7be5786541d65a8798e6153bcdcd1caeb49d", //put your public key here
+        key: "{{ env('PAYSTACK_PUBLIC_KEY')}}", //put your public key here
         email: "{{ Auth::user()->email }}", //put your customer's email here
         amount: amountKobo, //amount the customer is supposed to pay
         metadata: {

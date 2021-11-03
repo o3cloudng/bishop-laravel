@@ -52,7 +52,7 @@ class ContentController extends Controller
         
         $sub = DB::table('sub_transactions')
             ->where('book_id', '=', $id)
-            ->where('subscription_end_time', '>', Carbon::now())
+            // ->where('subscription_end_time', '>', Carbon::now())
             ->where('user_id', '=', Auth::user()->id)
             ->get();
         
@@ -93,7 +93,7 @@ class ContentController extends Controller
     public function readchapter($book_id)
     {
         $sub = DB::table('sub_transactions')
-        ->where('subscription_end_time', '>', Carbon::now())
+        // ->where('subscription_end_time', '>', Carbon::now())
         ->where('user_id', '=', Auth::user()->id)
         ->where('book_id', '=', $book_id)
         ->get();
@@ -141,8 +141,9 @@ class ContentController extends Controller
         }
 
         // PAYSTACK_SECRET_KEY  
+        // dd(env('PAYSTACK_SECRET_KEY'));
 
-        $response = Http::withToken("")
+        $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))
             ->get('https://api.paystack.co/transaction/verify/' . $reference);
 
         $result = $response->json();
@@ -249,15 +250,15 @@ class ContentController extends Controller
         $user_id = Auth::user()->id;
         // $user = User::find($user_id);
         $subs = SubTransaction::where('user_id', '=', $user_id)
-        ->where('subscription_end_time', '>', Carbon::now())
-        ->paginate(3);
+        // ->where('subscription_end_time', '>', Carbon::now())
+        ->paginate(5);
         
         $books = DB::table('books AS b')
             ->select([
                 'b.id','b.title', 'b.cover', 's.subscription_end_time', 's.user_id'
             ])->join('sub_transactions as s', 'b.id', '=', 's.book_id')
             ->where('s.user_id', '=', Auth::user()->id)
-            ->where('subscription_end_time', '>', Carbon::now())
+            // ->where('subscription_end_time', '>', Carbon::now())
             ->get();
            
         return view('myprofile', ['mytranx' => $subs, 'mybooks' => $books]);

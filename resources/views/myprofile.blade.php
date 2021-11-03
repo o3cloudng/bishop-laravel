@@ -50,7 +50,7 @@
                                             <img class="mb-5 w-full h-70 rounded shadow-md focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
                                             src='{{ Storage::url($mybook->cover) }}' alt="{{ $mybook->title }}">  
                                         </a>
-                                        <a href="{{ route('readonline', $mybook->id) }}"
+                                        <a href="{{ route('readchapter', $mybook->id) }}"
                                             class="w-full mx-auto bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded mt-1 md:mt-10 lg:mt-0 py-2 px-5 shadow opacity-75">
                                             Read now 
                                         </a> 
