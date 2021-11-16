@@ -78,6 +78,9 @@ Strong business development professional with a Doctor of Philosophy (PhD) focus
             </p>
           </div>
           <div class="w-full sm:w-1/2 p-6">
+            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+              Presentation of Free Novels
+            </h3>
             <img class="w-5/5 md:w-5/5 z-50" src="{{ asset('images/ads.jpeg') }}" />
             {{-- <svg class="w-full sm:h-64 mx-auto" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
               <title>travel booking</title>
