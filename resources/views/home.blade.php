@@ -78,7 +78,8 @@ Strong business development professional with a Doctor of Philosophy (PhD) focus
             </p>
           </div>
           <div class="w-full sm:w-1/2 p-6">
-            <svg class="w-full sm:h-64 mx-auto" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
+            <img class="w-5/5 md:w-5/5 z-50" src="{{ asset('images/ads.jpeg') }}" />
+            {{-- <svg class="w-full sm:h-64 mx-auto" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
               <title>travel booking</title>
               <path
                 transform="translate(-11.5 -150.75)"
@@ -202,7 +203,7 @@ Strong business development professional with a Doctor of Philosophy (PhD) focus
                 d="M998.23,509.4A15.27,15.27,0,0,1,1014,512c5.47,4.88,6.57,12.85,8,20s4.17,15.21,11,18a28.35,28.35,0,0,1-9.19-.27l10.25,9.19-17.27-5.63c-5.42-1.77-11.11-3.56-16.72-2.56-9.3,1.65-15.78,10.4-24.71,13.47l1-4.85-6,0a11.75,11.75,0,0,0,3.43-4,3.27,3.27,0,0,0-2.29-1.2c-2.5-15.59,6.76-31,18.81-41.17,2.38-2,5-3.92,8.06-4.42s6.64.87,7.71,3.78"
                 fill="#3c354c"
               />
-            </svg>
+            </svg> --}}
           </div>
         </div>
         <div class="flex flex-wrap flex-col-reverse sm:flex-row">
