@@ -1,5 +1,7 @@
-<div class="w-full py-7">&nbsp;</div>
 <x-guest-layout>
+    <body class="leading-normal tracking-normal text-white gradient"
+        style="font-family: 'Source Sans Pro', sans-serif;">
+        <div class="mt-20">&nbsp;</div>
     <x-auth-card>
         <x-slot name="logo">
             {{-- <a href="/">
